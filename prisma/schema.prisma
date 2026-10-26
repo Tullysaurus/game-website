@@ -11,3 +11,8 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
+model Global {
+  id String @id @default(uuid())
+  count Int @default(0)
+}
