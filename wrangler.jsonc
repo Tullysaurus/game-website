@@ -19,20 +19,29 @@
 			"service": "game-website"
 		}
 	],
-	"r2_buckets": [
-		// Use R2 incremental cache
-		// See https://opennext.js.org/cloudflare/caching
+	"d1_databases": [
 		{
-			"binding": "NEXT_INC_CACHE_R2_BUCKET",
-			// Create the bucket before deploying
-			// You can change the bucket name if you want
-			// See https://developers.cloudflare.com/workers/wrangler/commands/#r2-bucket-create
-			"bucket_name": "game-website-opennext-cache"
+		"binding": "DATABASE",
+		"database_id": "c8af40dd-629e-499b-98da-c19162de14a1"
 		}
 	],
 	"images": {
-		// Enable image optimization
-		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
+	},
+	"r2_buckets": [
+		{
+		"binding": "NEXT_INC_CACHE_R2_BUCKET",
+		"bucket_name": "game-website-opennext-cache"
+		}
+	],
+	"unsafe": {
+		"bindings": [
+			{
+				"name": "WORKER_SELF_REFERENCE",
+				"type": "service",
+				"service": "game-website",
+				"environment": "production"
+			}
+		]
 	}
 }
