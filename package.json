@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "wrangler d1 migrations apply DATABASE --remote && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "db:migrate": "prisma migrate dev --config prisma7.config.ts && prisma generate --config prisma7.config.ts && wrangler d1 migrations apply DATABASE --remote",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "postinstall": "prisma generate"
